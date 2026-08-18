@@ -4,7 +4,7 @@ name: Teste CI - Cypress
 on:
   push:
     branches: [ "main" ]
-
+  workflow_dispatch:
 jobs:
   build:
 
@@ -23,3 +23,11 @@ jobs:
     - name: Executar testes
       run: npm test
     
+    -name: Gerar relatório allure
+     run: npm report:generate
+
+    -name: Publicar o relatório no GitHubn pages
+     uses: peaceiris/actions-gh-pages@v4
+     with:
+       github_token: ${{ secrets.GITHUB_TOKEN }}
+       publish_dir: ./allure-report
