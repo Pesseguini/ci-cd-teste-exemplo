@@ -18,8 +18,19 @@ jobs:
         node-version: 18
         cache: 'npm'
     - name: Instalar Dependencias
-      run: npm install
+      run:  npm install
 
     - name: Executar testes
-      run: npm test
+      run:  npm test
     
+<<<<<<< Updated upstream
+=======
+    - name: Gerar relatório allure
+      run:  npm run report:generate
+
+    - name: Publicar o relatório no GitHubn pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+       github_token: ${{ secrets.GITHUB_TOKEN }}
+       publish_dir: ./allure-report
+>>>>>>> Stashed changes
